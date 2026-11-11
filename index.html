@@ -3,84 +3,224 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Evaluación Python 11</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Evaluación práctica de Python · Grado 11</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            color: black;
-            background: white;
             margin: 0;
             padding: 30px;
+            background: white;
+            color: black;
+            font-family: Arial, sans-serif;
         }
 
         .pagina {
-            max-width: 900px;
+            max-width: 1000px;
             margin: auto;
         }
 
         h1 {
-            font-size: 24px;
+            margin: 0 0 8px;
             text-align: center;
-            margin-bottom: 5px;
+            font-size: 26px;
         }
 
-        .situacion {
+        h2 {
+            margin-top: 30px;
+            font-size: 25px;
+        }
+
+        h3 {
+            margin-top: 26px;
+        }
+
+        .subtitulo {
             text-align: center;
             margin-bottom: 25px;
+            font-weight: bold;
         }
 
         .datos {
-            display: flex;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
             gap: 20px;
-            margin-bottom: 25px;
+            margin: 25px 0;
         }
 
-        .datos div {
-            flex: 1;
+        label {
+            display: block;
         }
 
-        input {
+        input,
+        select,
+        textarea,
+        button {
+            font: inherit;
+        }
+
+        input[type="text"],
+        select {
             width: 100%;
-            box-sizing: border-box;
-            padding: 6px;
-            margin-top: 4px;
+            margin-top: 6px;
+            padding: 10px;
+            border: 1px solid black;
+            background: white;
         }
 
-        .problema {
+        button {
+            padding: 11px 20px;
+            border: 1px solid black;
+            background: white;
+            cursor: pointer;
+        }
+
+        button:hover:not(:disabled) {
+            background: #eeeeee;
+        }
+
+        button:disabled {
+            cursor: not-allowed;
+            opacity: 0.55;
+        }
+
+        .acciones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .instrucciones {
             line-height: 1.5;
+        }
+
+        .evaluacion {
+            display: none;
+        }
+
+        .barra-evaluacion {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: center;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            padding: 12px 0;
+            margin: 22px 0;
+        }
+
+        .temporizador {
+            font-size: 24px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .tiempo-alerta {
+            color: #a00000;
+        }
+
+        .situacion-problema {
+            font-size: 18px;
+            line-height: 1.55;
         }
 
         .requisitos {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 9px 30px;
             margin-bottom: 25px;
         }
 
-        textarea {
+        .requisito::before {
+            content: "□ ";
+        }
+
+        .codigo {
             width: 100%;
-            box-sizing: border-box;
+            min-height: 370px;
+            padding: 14px;
+            border: 1px solid black;
+            resize: vertical;
             font-family: Consolas, "Courier New", monospace;
             font-size: 16px;
-            line-height: 1.5;
-            padding: 12px;
-            resize: vertical;
+            line-height: 1.55;
+            tab-size: 4;
+        }
+
+        .estado-editor {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 6px;
+            font-size: 14px;
         }
 
         .resultado {
-            margin-top: 20px;
+            width: 100%;
+            min-height: 90px;
+            padding: 10px;
+            border: 1px solid black;
+            resize: vertical;
         }
 
-        button {
+        .mensaje {
+            display: none;
+            margin: 18px 0;
+            padding: 14px;
+            border: 2px solid black;
+            font-weight: bold;
+        }
+
+        .aviso {
             margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
+            font-size: 14px;
+            line-height: 1.45;
+        }
+
+        .oculto {
+            display: none;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 18px;
+            }
+
+            .datos,
+            .requisitos {
+                grid-template-columns: 1fr;
+            }
+
+            .barra-evaluacion {
+                display: block;
+            }
+
+            .temporizador {
+                margin-top: 12px;
+            }
+        }
+
+        @media print {
+            button,
+            .aviso {
+                display: none;
+            }
+
+            body {
+                padding: 0;
+            }
         }
     </style>
-
 </head>
 
 <body>
@@ -89,138 +229,83 @@
 
     <h1>EVALUACIÓN PRÁCTICA DE PYTHON · GRADO 11</h1>
 
-    <div class="situacion">
-        <strong>SITUACIÓN 01</strong>
+    <div class="subtitulo">
+        Operadores y condicionales
     </div>
 
-    <hr>
+    <section id="identificacion">
 
-    <div class="datos">
+        <p class="instrucciones">
+            Escribe tu nombre completo y selecciona tu curso.
+            La situación se asignará automáticamente y permanecerá
+            vinculada a esos datos.
+        </p>
 
-        <div>
+        <div class="datos">
+
             <label>
-                <strong>Nombre:</strong>
-            </label>
-            <input type="text">
-        </div>
+                <strong>Nombre completo:</strong>
 
-        <div>
+                <input
+                    id="nombre"
+                    type="text"
+                    autocomplete="off"
+                    maxlength="80"
+                    placeholder="Escribe nombre y apellido"
+                >
+            </label>
+
             <label>
                 <strong>Curso:</strong>
+
+                <select id="curso">
+                    <option value="">Selecciona</option>
+                    <option value="11A">11A</option>
+                    <option value="11B">11B</option>
+                    <option value="11C">11C</option>
+                </select>
             </label>
-            <input type="text">
+
         </div>
 
-        <div>
-            <label>
-                <strong>Fecha:</strong>
-            </label>
-            <input type="date">
+        <div class="acciones">
+            <button
+                id="botonComenzar"
+                type="button"
+            >
+                Comenzar evaluación
+            </button>
+
+            <button
+                id="botonReiniciar"
+                class="oculto"
+                type="button"
+            >
+                Reiniciar intento
+            </button>
         </div>
 
-    </div>
+        <div
+            id="mensajeInicial"
+            class="mensaje"
+        ></div>
 
-    <h2>Entrada al cine</h2>
+    </section>
 
-    <div class="problema">
+    <section
+        id="evaluacion"
+        class="evaluacion"
+    >
 
-        <p>
-            <strong>Situación problema:</strong>
-        </p>
+        <div class="barra-evaluacion">
 
-        <p>
-            Pregunta la edad, el precio de una entrada y si tiene
-            carné estudiantil. Calcula el precio de dos entradas.
-            Si tiene 15 años o más y tiene carné, muestra
-            <strong>"Descuento disponible"</strong>;
-            de lo contrario,
-            <strong>"Tarifa normal"</strong>.
-        </p>
+            <div>
+                <div>
+                    <strong id="estudianteAsignado"></strong>
+                </div>
 
-    </div>
+                <div id="datosAsignacion"></div>
+            </div>
 
-    <h3>Requisitos</h3>
-
-    <div class="requisitos">
-
-        <label>
-            <input type="checkbox">
-            Variables
-        </label>
-
-        <label>
-            <input type="checkbox">
-            int / float / text
-        </label>
-
-        <label>
-            <input type="checkbox">
-            input()
-        </label>
-
-        <label>
-            <input type="checkbox">
-            .lower()
-        </label>
-
-        <label>
-            <input type="checkbox">
-            print()
-        </label>
-
-        <label>
-            <input type="checkbox">
-            Operación matemática
-        </label>
-
-        <label>
-            <input type="checkbox">
-            if / else
-        </label>
-
-        <label>
-            <input type="checkbox">
-            and / or
-        </label>
-
-    </div>
-
-    <hr>
-
-    <h3>Escribe aquí tu programa</h3>
-
-    <p>
-        Usa sangría en las líneas que pertenecen al
-        <code>if</code> y al <code>else</code>.
-    </p>
-
-    <textarea
-        rows="16"
-        placeholder="Escribe aquí tu código Python..."></textarea>
-
-    <div class="resultado">
-
-        <label>
-            <input type="checkbox">
-            Probé mi código
-        </label>
-
-        <br><br>
-
-        <strong>Resultado obtenido:</strong>
-
-        <br><br>
-
-        <textarea rows="3"></textarea>
-
-    </div>
-
-    <button type="button">
-        Enviar respuesta
-    </button>
-
-</div>
-
-</body>
-
-</html>
+            <div
+                id="temporizador"
