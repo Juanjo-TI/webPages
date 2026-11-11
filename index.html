@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
@@ -7,18 +6,220 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Evaluación Python 11</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: black;
+            background: white;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .pagina {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .situacion {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .datos {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .datos div {
+            flex: 1;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 6px;
+            margin-top: 4px;
+        }
+
+        .problema {
+            line-height: 1.5;
+        }
+
+        .requisitos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 12px;
+            resize: vertical;
+        }
+
+        .resultado {
+            margin-top: 20px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+
 </head>
 
 <body>
 
-    <h1>Evaluación práctica de Python</h1>
+<div class="pagina">
 
-    <h2>Situación 01: Entrada al cine</h2>
+    <h1>EVALUACIÓN PRÁCTICA DE PYTHON · GRADO 11</h1>
+
+    <div class="situacion">
+        <strong>SITUACIÓN 01</strong>
+    </div>
+
+    <hr>
+
+    <div class="datos">
+
+        <div>
+            <label>
+                <strong>Nombre:</strong>
+            </label>
+            <input type="text">
+        </div>
+
+        <div>
+            <label>
+                <strong>Curso:</strong>
+            </label>
+            <input type="text">
+        </div>
+
+        <div>
+            <label>
+                <strong>Fecha:</strong>
+            </label>
+            <input type="date">
+        </div>
+
+    </div>
+
+    <h2>Entrada al cine</h2>
+
+    <div class="problema">
+
+        <p>
+            <strong>Situación problema:</strong>
+        </p>
+
+        <p>
+            Pregunta la edad, el precio de una entrada y si tiene
+            carné estudiantil. Calcula el precio de dos entradas.
+            Si tiene 15 años o más y tiene carné, muestra
+            <strong>"Descuento disponible"</strong>;
+            de lo contrario,
+            <strong>"Tarifa normal"</strong>.
+        </p>
+
+    </div>
+
+    <h3>Requisitos</h3>
+
+    <div class="requisitos">
+
+        <label>
+            <input type="checkbox">
+            Variables
+        </label>
+
+        <label>
+            <input type="checkbox">
+            int / float / text
+        </label>
+
+        <label>
+            <input type="checkbox">
+            input()
+        </label>
+
+        <label>
+            <input type="checkbox">
+            .lower()
+        </label>
+
+        <label>
+            <input type="checkbox">
+            print()
+        </label>
+
+        <label>
+            <input type="checkbox">
+            Operación matemática
+        </label>
+
+        <label>
+            <input type="checkbox">
+            if / else
+        </label>
+
+        <label>
+            <input type="checkbox">
+            and / or
+        </label>
+
+    </div>
+
+    <hr>
+
+    <h3>Escribe aquí tu programa</h3>
 
     <p>
-        Si puedes leer este mensaje,
-        GitHub Pages está funcionando correctamente.
+        Usa sangría en las líneas que pertenecen al
+        <code>if</code> y al <code>else</code>.
     </p>
+
+    <textarea
+        rows="16"
+        placeholder="Escribe aquí tu código Python..."></textarea>
+
+    <div class="resultado">
+
+        <label>
+            <input type="checkbox">
+            Probé mi código
+        </label>
+
+        <br><br>
+
+        <strong>Resultado obtenido:</strong>
+
+        <br><br>
+
+        <textarea rows="3"></textarea>
+
+    </div>
+
+    <button type="button">
+        Enviar respuesta
+    </button>
+
+</div>
 
 </body>
 
